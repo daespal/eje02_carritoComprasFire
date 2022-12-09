@@ -1,0 +1,7 @@
+{
+  "name": "eje02_carritoComprasFire",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
