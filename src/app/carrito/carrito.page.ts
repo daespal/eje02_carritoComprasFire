@@ -34,8 +34,6 @@ export class CarritoPage implements OnInit {
     this.car.forEach(i => this.total+=(i.precio*i.cantidad));
   });
 
-  
-
   }
 
 
