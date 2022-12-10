@@ -11,6 +11,22 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'view-product',
+    loadChildren: () => import('./view-product/view-product.module').then( m => m.ViewProductPageModule)
+  },
+  {
+    path: 'new-product',
+    loadChildren: () => import('./new-product/new-product.module').then( m => m.NewProductPageModule)
+  },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
+  {
+    path: 'view-product-carrito',
+    loadChildren: () => import('./view-product-carrito/view-product-carrito.module').then( m => m.ViewProductCarritoPageModule)
+  },
 ];
 
 @NgModule({

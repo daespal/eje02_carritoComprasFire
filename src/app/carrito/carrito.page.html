@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="goToHome()">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let i of car; let ind=index">
+    <ion-row (click)="getProductByIdCarrito(i.id)">
+      <img src="{{i.photo}}" width="250" height="250" />
+      <ion-card-header>
+        <ion-card-title>{{i.product}}</ion-card-title>
+        <ion-card-subtitle>Precio unitario: ${{i.precio}}</ion-card-subtitle>
+
+        <hr />
+        {{i.descripcion}} <br />
+        Cantidad: {{i.cantidad}}
+
+        <ion-button
+          fill="clear"
+          (click)="$event.stopPropagation();presentAlert(i.cantidad,i.id)"
+        >
+          <ion-icon color="danger" name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-card-header>
+    </ion-row>
+  </ion-card>
+</ion-content>
+<ion-footer>
+  <ion-chip class="ion-float-right">
+    <ion-icon name="cash-outline" color="success"></ion-icon>
+    <ion-label>Total: ${{total}}</ion-label>
+  </ion-chip>
+</ion-footer>

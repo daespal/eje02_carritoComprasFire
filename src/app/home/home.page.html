@@ -1,20 +1,46 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> Lista de productos </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ng-container *ngFor="let i of products">
+    <ion-card>
+      <ion-row (click)="getProductById(i.id)">
+        <img src="{{i.photo}}" width="200" height="200" />
+        <ion-card-header>
+          <ion-card-title>{{i.product}}</ion-card-title>
+          <ion-card-subtitle>Precio: ${{i.precio}}</ion-card-subtitle>
+          <hr />
+          Descripción: <br />
+          {{i.descripcion}}
+        </ion-card-header>
+        <ion-button
+          id="addToCartBtn"
+          (click)="$event.stopPropagation();addProductCarrito(i.product,i.descripcion,i.precio,i.photo)"
+          ><ion-icon name="add"></ion-icon
+        ></ion-button>
+        <ion-button
+          id="deleteToCartBtn"
+          (click)="$event.stopPropagation();removeProduct(i.id)"
+          ><ion-icon name="trash-outline"></ion-icon
+        ></ion-button>
+      </ion-row>
+    </ion-card>
+  </ng-container>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-fab slot="fixed" vertical="bottom" horizontal="end">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="top">
+      <ion-fab-button (click)="viewCart()">
+        <ion-icon name="cart"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button>
+        <ion-icon name="add" (click)="addProduct()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>
